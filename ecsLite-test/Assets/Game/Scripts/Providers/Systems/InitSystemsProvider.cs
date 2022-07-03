@@ -1,4 +1,5 @@
-using Game.Scripts.ECS.Systems;
+using Game.Scripts.ECS.Systems.Player;
+using Game.Scripts.StaticData;
 using Leopotam.EcsLite;
 
 namespace Game.Scripts.Providers.Systems
@@ -7,9 +8,9 @@ namespace Game.Scripts.Providers.Systems
     {
         private readonly EcsSystems _initSystems;
 
-        public InitSystemsProvider(EcsWorld ecsWorld)
+        public InitSystemsProvider(EcsWorld ecsWorld, SceneSharedData sceneSharedData)
         {
-            _initSystems = new EcsSystems(ecsWorld);
+            _initSystems = new EcsSystems(ecsWorld, sceneSharedData);
             _initSystems.Add(new PlayerInitSystem());
             
             _initSystems.Init();

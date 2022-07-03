@@ -1,4 +1,4 @@
-using Game.Scripts.ECS.Systems;
+using Game.Scripts.ECS.Systems.Player;
 using Leopotam.EcsLite;
 
 namespace Game.Scripts.Providers.Systems
