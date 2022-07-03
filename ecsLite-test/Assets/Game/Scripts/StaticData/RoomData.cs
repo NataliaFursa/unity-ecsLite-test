@@ -1,13 +1,14 @@
+using System;
 using UnityEngine;
 
-namespace Game.Scripts.Data
+namespace Game.Scripts.StaticData
 {
-    [CreateAssetMenu(fileName = nameof(RoomData), menuName = "Data/RoomData", order = 0)]
-    public class RoomData : ScriptableObject
+    [Serializable]
+    public class RoomData
     {
-        [SerializeField] 
+        [SerializeField]
         private Transform _door;
-        [SerializeField] 
+        [SerializeField]
         private Transform _button;
 
         public Transform Door => _door;
