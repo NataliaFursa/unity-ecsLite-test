@@ -6,6 +6,8 @@ namespace Game.Scripts.StaticData
     [Serializable]
     public class RoomData
     {
+        [SerializeField] 
+        private string _id;
         [SerializeField]
         private Transform _door;
         [SerializeField] 
@@ -15,6 +17,7 @@ namespace Game.Scripts.StaticData
         [SerializeField]
         private Transform _button;
 
+        public string Id => _id;
         public Transform Door => _door;
         public Vector3 MoveDirection => _moveDirection;
         public float OpenSpeed => _openSpeed;

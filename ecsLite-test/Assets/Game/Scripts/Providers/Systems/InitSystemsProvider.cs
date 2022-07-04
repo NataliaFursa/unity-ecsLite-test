@@ -1,4 +1,5 @@
 using Game.Scripts.ECS.Systems.Button;
+using Game.Scripts.ECS.Systems.Door;
 using Game.Scripts.ECS.Systems.Player;
 using Game.Scripts.StaticData;
 using Leopotam.EcsLite;
@@ -14,6 +15,7 @@ namespace Game.Scripts.Providers.Systems
             _initSystems = new EcsSystems(ecsWorld, sceneObjectsData);
             _initSystems.Add(new PlayerInitSystem());
             _initSystems.Add(new ButtonInitSystem());
+            _initSystems.Add(new DoorInitSystem());
             
             _initSystems.Init();
         }

@@ -1,3 +1,4 @@
+using Game.Scripts.ECS.Systems.Door;
 using Game.Scripts.ECS.Systems.Player;
 using Leopotam.EcsLite;
 
@@ -11,6 +12,7 @@ namespace Game.Scripts.Providers.Systems
         {
             _fixedUpdateSystems = new EcsSystems(ecsWorld);
             _fixedUpdateSystems.Add(new PlayerMoveSystem());
+            _fixedUpdateSystems.Add(new DoorOpenSystem());
             
             _fixedUpdateSystems.Init();
         }

@@ -19,6 +19,7 @@ namespace Game.Scripts.ECS.Systems.Button
                 buttonPool.Add(buttonEntity);
 
                 ref var buttonComponent = ref buttonPool.Get(buttonEntity);
+                buttonComponent.Id = room.Id;
                 buttonComponent.Position = room.Button.position;
                 buttonComponent.Pressed = false;
                 buttonComponent.Radius = 2;
