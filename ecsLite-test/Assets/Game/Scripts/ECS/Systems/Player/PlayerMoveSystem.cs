@@ -11,7 +11,6 @@ namespace Game.Scripts.ECS.Systems.Player
             
             var filter = ecsWorld.Filter<PlayerTransformComponent>().Inc<PlayerComponent>().End();
             var transformPool = ecsWorld.GetPool<PlayerTransformComponent>();
-
             var playerPool = ecsWorld.GetPool<PlayerComponent>();
             
             foreach (var entity in filter)
