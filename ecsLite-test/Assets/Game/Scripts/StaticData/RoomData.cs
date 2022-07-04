@@ -8,10 +8,16 @@ namespace Game.Scripts.StaticData
     {
         [SerializeField]
         private Transform _door;
+        [SerializeField] 
+        private Vector3 _moveDirection;
+        [SerializeField] 
+        private float _openSpeed;
         [SerializeField]
         private Transform _button;
 
         public Transform Door => _door;
+        public Vector3 MoveDirection => _moveDirection;
+        public float OpenSpeed => _openSpeed;
         public Transform Button => _button;
     }
 }

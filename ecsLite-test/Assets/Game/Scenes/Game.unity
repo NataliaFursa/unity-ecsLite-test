@@ -314,8 +314,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _world: {fileID: 521653276}
-  _player: {fileID: 1854718168}
-  _playerSpeed: 5
+  _player: {fileID: 1854718172}
+  _playerSpeed: 3
 --- !u!4 &893955064
 Transform:
   m_ObjectHideFlags: 0
@@ -470,7 +470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7207545dc9b2e4d90b517c9c9a3e7831, type: 3}
---- !u!4 &1854718168 stripped
+--- !u!4 &1854718172 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3437565155381072699, guid: 7207545dc9b2e4d90b517c9c9a3e7831, type: 3}
   m_PrefabInstance: {fileID: 1854718167}

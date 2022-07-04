@@ -1,15 +1,15 @@
-using Game.Scripts.ECS.Components.Player;
+using Game.Scripts.ECS.Components.Inputs;
 using Leopotam.EcsLite;
 using UnityEngine;
 
-namespace Game.Scripts.ECS.Systems.Player
+namespace Game.Scripts.ECS.Systems.Inputs
 {
-    public class PlayerInputSystem : IEcsRunSystem
+    public class MouseInputSystem : IEcsRunSystem
     {
         public void Run(EcsSystems systems)
         {
-            var filter = systems.GetWorld().Filter<PlayerInputComponent>().End();
-            var playerInputPool = systems.GetWorld().GetPool<PlayerInputComponent>();
+            var filter = systems.GetWorld().Filter<MouseInputComponent>().End();
+            var playerInputPool = systems.GetWorld().GetPool<MouseInputComponent>();
 
             var mousePositionChanged = TryGetMousePosition(out var mousePosition);
             

@@ -23,7 +23,7 @@ namespace Game.Scripts.EnterPoint
         
         private void Start()
         {
-            var sceneSharedData = new SceneSharedData(_world.Rooms, _player, _playerSpeed);
+            var sceneSharedData = new SceneObjectsData(_world.Rooms, _player, _playerSpeed);
 
             _ecsWorld = new EcsWorld();
             
