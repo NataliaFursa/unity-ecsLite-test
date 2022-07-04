@@ -6,12 +6,18 @@ namespace Game.Scripts.ECS.Systems.Button
 {
     public class ButtonInitSystem : IEcsInitSystem
     {
+        private readonly ButtonData[] _rooms;
+        
+        public ButtonInitSystem(ButtonData[] rooms)
+        {
+            _rooms = rooms;
+        }
+
         public void Init(EcsSystems systems)
         {
             var ecsWorld = systems.GetWorld();
-            var data = systems.GetShared<SceneObjectsData>();
 
-            foreach (var room in data.Rooms)
+            foreach (var room in _rooms)
             {
                 var buttonEntity = ecsWorld.NewEntity();
 
@@ -20,9 +26,9 @@ namespace Game.Scripts.ECS.Systems.Button
 
                 ref var buttonComponent = ref buttonPool.Get(buttonEntity);
                 buttonComponent.Id = room.Id;
-                buttonComponent.Position = room.Button.position;
+                buttonComponent.Position = room.ButtonPosition;
                 buttonComponent.Pressed = false;
-                buttonComponent.Radius = 2;
+                buttonComponent.Radius = room.ButtonRadius;
             }
         }
     }

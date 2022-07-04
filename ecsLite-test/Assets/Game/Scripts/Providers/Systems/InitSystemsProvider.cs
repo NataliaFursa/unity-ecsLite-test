@@ -1,7 +1,7 @@
+using Game.Scripts.Behaviours;
 using Game.Scripts.ECS.Systems.Button;
 using Game.Scripts.ECS.Systems.Door;
 using Game.Scripts.ECS.Systems.Player;
-using Game.Scripts.StaticData;
 using Leopotam.EcsLite;
 
 namespace Game.Scripts.Providers.Systems
@@ -10,12 +10,12 @@ namespace Game.Scripts.Providers.Systems
     {
         private readonly EcsSystems _initSystems;
 
-        public InitSystemsProvider(EcsWorld ecsWorld, SceneObjectsData sceneObjectsData)
+        public InitSystemsProvider(EcsWorld ecsWorld, World world)
         {
-            _initSystems = new EcsSystems(ecsWorld, sceneObjectsData);
-            _initSystems.Add(new PlayerInitSystem());
-            _initSystems.Add(new ButtonInitSystem());
-            _initSystems.Add(new DoorInitSystem());
+            _initSystems = new EcsSystems(ecsWorld);
+            _initSystems.Add(new PlayerInitSystem(world.Player, world.PlayerSpeed));
+            _initSystems.Add(new ButtonInitSystem(world.Buttons));
+            _initSystems.Add(new DoorInitSystem(world.Doors));
             
             _initSystems.Init();
         }

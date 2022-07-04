@@ -6,12 +6,18 @@ namespace Game.Scripts.ECS.Systems.Door
 {
     public class DoorInitSystem : IEcsInitSystem
     {
+        private readonly DoorData[] _doors;
+        
+        public DoorInitSystem(DoorData[] doors)
+        {
+            _doors = doors;
+        }
+
         public void Init(EcsSystems systems)
         {
             var ecsWorld = systems.GetWorld();
-            var data = systems.GetShared<SceneObjectsData>();
 
-            foreach (var room in data.Rooms)
+            foreach (var door in _doors)
             {
                 var doorEntity = ecsWorld.NewEntity();
 
@@ -19,10 +25,10 @@ namespace Game.Scripts.ECS.Systems.Door
                 doorPool.Add(doorEntity);
 
                 ref var doorComponent = ref doorPool.Get(doorEntity);
-                doorComponent.Id = room.Id;
-                doorComponent.Door = room.Door;
-                doorComponent.Direction = room.MoveDirection;
-                doorComponent.Speed = room.OpenSpeed;
+                doorComponent.Id = door.Id;
+                doorComponent.Door = door.Door;
+                doorComponent.Direction = door.DoorTarget;
+                doorComponent.Speed = door.DoorSpeed;
             }
         }
     }

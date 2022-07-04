@@ -1,5 +1,5 @@
 using Game.Scripts.ECS.Components.Button;
-using Game.Scripts.ECS.Components.Inputs;
+using Game.Scripts.ECS.Components.Player;
 using Leopotam.EcsLite;
 using UnityEngine;
 
@@ -9,8 +9,8 @@ namespace Game.Scripts.ECS.Systems.Button
     {
         public void Run(EcsSystems systems)
         {
-            var inputFilter = systems.GetWorld().Filter<MouseInputComponent>().End();
-            var inputPool = systems.GetWorld().GetPool<MouseInputComponent>();
+            var positionFilter = systems.GetWorld().Filter<PlayerPositionComponent>().End();
+            var positionPool = systems.GetWorld().GetPool<PlayerPositionComponent>();
 
             var buttonFilter = systems.GetWorld().Filter<ButtonComponent>().End();
             var buttonPool = systems.GetWorld().GetPool<ButtonComponent>();
@@ -19,12 +19,12 @@ namespace Game.Scripts.ECS.Systems.Button
             {
                 ref var buttonComponent = ref buttonPool.Get(buttonEntity);
 
-                foreach (var inputEntity in inputFilter)
+                foreach (var inputEntity in positionFilter)
                 {
-                    ref var inputComponent = ref inputPool.Get(inputEntity);
+                    ref var inputComponent = ref positionPool.Get(inputEntity);
 
                     buttonComponent.Pressed = 
-                        Vector3.Distance(inputComponent.InputResult, buttonComponent.Position) < buttonComponent.Radius;
+                        Vector3.Distance(inputComponent.Position, buttonComponent.Position) < buttonComponent.Radius;
                 }
             }
         }

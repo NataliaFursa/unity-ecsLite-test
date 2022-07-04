@@ -6,8 +6,17 @@ namespace Game.Scripts.Behaviours
     public class World : MonoBehaviour
     {
         [SerializeField]
-        private RoomData[] _rooms;
+        private ButtonData[] _buttons;
+        [SerializeField] 
+        private DoorData[] _doors;
+        [SerializeField] 
+        private Transform _player;
+        [SerializeField] 
+        private float _playerSpeed;
         
-        public RoomData[] Rooms => _rooms;
+        public ButtonData[] Buttons => _buttons;
+        public DoorData[] Doors => _doors;
+        public Transform Player => _player;
+        public float PlayerSpeed => _playerSpeed;
     }
 }

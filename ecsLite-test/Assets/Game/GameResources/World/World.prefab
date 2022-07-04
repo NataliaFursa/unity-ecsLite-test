@@ -316,7 +316,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8305443620824518946}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.8, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8305443622029679168}
@@ -827,7 +827,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8305443621479830179}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22, y: 3, z: 30}
+  m_LocalPosition: {x: -9, y: 3, z: 30}
   m_LocalScale: {x: 20, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 8305443620824518949}
@@ -1272,7 +1272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8305443622029679169}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.17, y: 3, z: 30}
+  m_LocalPosition: {x: 10.12, y: 3, z: 30}
   m_LocalScale: {x: 18.44, y: 7, z: 3}
   m_Children: []
   m_Father: {fileID: 8305443620824518949}
@@ -1399,7 +1399,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8305443622157252805}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23, y: 0, z: 20}
+  m_LocalPosition: {x: -10, y: 0, z: 20}
   m_LocalScale: {x: 3, y: -0.5, z: 3}
   m_Children: []
   m_Father: {fileID: 8305443620824518949}
@@ -1512,22 +1512,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44af88c932bf456b85181ad91b79feb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rooms:
+  _buttons:
+  - _id: Red
+    _buttonPosition: {x: -10, y: 0, z: -10}
+    _buttonRadius: 3
+  - _id: Green
+    _buttonPosition: {x: 10, y: 0, z: -10}
+    _buttonRadius: 3
+  - _id: Yellow
+    _buttonPosition: {x: -10, y: 0, z: 20}
+    _buttonRadius: 3
+  _doors:
   - _id: Red
     _door: {fileID: 8305443620605814776}
-    _moveDirection: {x: -20, y: 3, z: 11}
-    _openSpeed: 0.2
-    _button: {fileID: 8305443620937284068}
+    _doorTarget: {x: -20, y: 3, z: 11}
+    _doorSpeed: 0.1
   - _id: Green
     _door: {fileID: 8305443622641614933}
-    _moveDirection: {x: 20, y: 3, z: -30}
-    _openSpeed: 0.2
-    _button: {fileID: 8305443621837895033}
+    _doorTarget: {x: 20, y: 3, z: -30}
+    _doorSpeed: 0.1
   - _id: Yellow
     _door: {fileID: 8305443621479830178}
-    _moveDirection: {x: -2, y: 3, z: 30}
-    _openSpeed: 0.2
-    _button: {fileID: 8305443622157252804}
+    _doorTarget: {x: 11, y: 3, z: 30}
+    _doorSpeed: 0.1
+  _player: {fileID: 0}
+  _playerSpeed: 3
 --- !u!1 &8305443622585492334
 GameObject:
   m_ObjectHideFlags: 0
