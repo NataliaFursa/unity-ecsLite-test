@@ -9,11 +9,13 @@ namespace Game.Scripts.ECS.Systems.Button
     {
         public void Run(EcsSystems systems)
         {
-            var playerFilter = systems.GetWorld().Filter<PlayerComponent>().End();
-            var playerPool = systems.GetWorld().GetPool<PlayerComponent>();
+            var ecsWorld = systems.GetWorld();
+            
+            var playerFilter = ecsWorld.Filter<PlayerComponent>().End();
+            var playerPool = ecsWorld.GetPool<PlayerComponent>();
 
-            var buttonFilter = systems.GetWorld().Filter<ButtonComponent>().End();
-            var buttonPool = systems.GetWorld().GetPool<ButtonComponent>();
+            var buttonFilter = ecsWorld.Filter<ButtonComponent>().End();
+            var buttonPool = ecsWorld.GetPool<ButtonComponent>();
 
             foreach (var buttonEntity in buttonFilter)
             {

@@ -9,11 +9,13 @@ namespace Game.Scripts.ECS.Systems.Door
     {
         public void Run(EcsSystems systems)
         {
-            var buttonFilter = systems.GetWorld().Filter<ButtonComponent>().End();
-            var buttonPool = systems.GetWorld().GetPool<ButtonComponent>();
+            var ecsWorld = systems.GetWorld();
+            
+            var buttonFilter = ecsWorld.Filter<ButtonComponent>().End();
+            var buttonPool = ecsWorld.GetPool<ButtonComponent>();
 
-            var doorFilter = systems.GetWorld().Filter<DoorComponent>().End();
-            var doorPool = systems.GetWorld().GetPool<DoorComponent>();
+            var doorFilter = ecsWorld.Filter<DoorComponent>().End();
+            var doorPool = ecsWorld.GetPool<DoorComponent>();
             
             foreach (var doorEntity in doorFilter)
             {

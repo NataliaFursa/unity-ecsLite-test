@@ -9,9 +9,11 @@ namespace Game.Scripts.ECS.Systems.Player
     {
         public void Run(EcsSystems systems)
         {
-            var filter = systems.GetWorld().Filter<PlayerComponent>().Inc<MouseInputComponent>().End();
-            var playerPool = systems.GetWorld().GetPool<PlayerComponent>();
-            var inputPool = systems.GetWorld().GetPool<MouseInputComponent>();
+            var ecsWorld = systems.GetWorld();
+            
+            var filter = ecsWorld.Filter<PlayerComponent>().Inc<MouseInputComponent>().End();
+            var playerPool = ecsWorld.GetPool<PlayerComponent>();
+            var inputPool = ecsWorld.GetPool<MouseInputComponent>();
             
             foreach (var entity in filter)
             {

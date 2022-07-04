@@ -8,8 +8,10 @@ namespace Game.Scripts.ECS.Systems.Inputs
     {
         public void Run(EcsSystems systems)
         {
-            var filter = systems.GetWorld().Filter<MouseInputComponent>().End();
-            var playerInputPool = systems.GetWorld().GetPool<MouseInputComponent>();
+            var ecsWorld = systems.GetWorld();
+            
+            var filter = ecsWorld.Filter<MouseInputComponent>().End();
+            var playerInputPool = ecsWorld.GetPool<MouseInputComponent>();
 
             var mousePositionChanged = TryGetMousePosition(out var mousePosition);
             

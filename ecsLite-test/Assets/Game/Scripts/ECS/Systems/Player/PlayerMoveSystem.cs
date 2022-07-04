@@ -7,10 +7,12 @@ namespace Game.Scripts.ECS.Systems.Player
     {
         public void Run(EcsSystems systems)
         {
-            var filter = systems.GetWorld().Filter<PlayerTransformComponent>().Inc<PlayerComponent>().End();
-            var transformPool = systems.GetWorld().GetPool<PlayerTransformComponent>();
+            var ecsWorld = systems.GetWorld();
+            
+            var filter = ecsWorld.Filter<PlayerTransformComponent>().Inc<PlayerComponent>().End();
+            var transformPool = ecsWorld.GetPool<PlayerTransformComponent>();
 
-            var playerPool = systems.GetWorld().GetPool<PlayerComponent>();
+            var playerPool = ecsWorld.GetPool<PlayerComponent>();
             
             foreach (var entity in filter)
             {

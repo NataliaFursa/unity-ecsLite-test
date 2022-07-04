@@ -7,10 +7,12 @@ namespace Game.Scripts.ECS.Systems.Door
     {
         public void Run(EcsSystems systems)
         {
-            var doorFilter = systems.GetWorld().Filter<DoorComponent>().Inc<DoorTransformComponent>().End();
-            var doorPool = systems.GetWorld().GetPool<DoorComponent>();
+            var ecsWorld = systems.GetWorld();
+            
+            var doorFilter = ecsWorld.Filter<DoorComponent>().Inc<DoorTransformComponent>().End();
+            var doorPool = ecsWorld.GetPool<DoorComponent>();
 
-            var transformPool = systems.GetWorld().GetPool<DoorTransformComponent>();
+            var transformPool = ecsWorld.GetPool<DoorTransformComponent>();
             
             foreach (var doorEntity in doorFilter)
             {
