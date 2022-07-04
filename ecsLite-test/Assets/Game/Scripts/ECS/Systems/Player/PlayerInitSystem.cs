@@ -22,24 +22,24 @@ namespace Game.Scripts.ECS.Systems.Player
 
             var playerEntity = ecsWorld.NewEntity();
 
+            var transformPool = ecsWorld.GetPool<PlayerTransformComponent>();
+            transformPool.Add(playerEntity);
+            
             var playerPool = ecsWorld.GetPool<PlayerComponent>();
             playerPool.Add(playerEntity);
 
             var inputPool = ecsWorld.GetPool<MouseInputComponent>();
             inputPool.Add(playerEntity);
-            
-            var playerPositionPool = ecsWorld.GetPool<PlayerPositionComponent>();
-            playerPositionPool.Add(playerEntity);
 
+            ref var transformComponent = ref transformPool.Get(playerEntity);
+            transformComponent.Player = _player;
+            
             ref var playerComponent = ref playerPool.Get(playerEntity);
-            playerComponent.Player = _player;
+            playerComponent.Position = _player.position;
             playerComponent.Speed = _speed;
             
             ref var inputComponent = ref inputPool.Get(playerEntity);
             inputComponent.InputResult = _player.position;
-
-            ref var playerPositionComponent = ref playerPositionPool.Get(playerEntity);
-            playerPositionComponent.Position = _player.position;
         }
     }
 }

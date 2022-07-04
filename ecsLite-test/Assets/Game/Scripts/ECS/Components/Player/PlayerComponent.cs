@@ -4,7 +4,7 @@ namespace Game.Scripts.ECS.Components.Player
 {
     public struct PlayerComponent
     {
-        public Transform Player;
+        public Vector3 Position;
         public float Speed;
     }
 }

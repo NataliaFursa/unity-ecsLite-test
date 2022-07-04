@@ -1,7 +1,5 @@
-using Game.Scripts.ECS.Components.Inputs;
 using Game.Scripts.ECS.Components.Player;
 using Leopotam.EcsLite;
-using UnityEngine;
 
 namespace Game.Scripts.ECS.Systems.Player
 {
@@ -9,23 +7,17 @@ namespace Game.Scripts.ECS.Systems.Player
     {
         public void Run(EcsSystems systems)
         {
-            var filter = systems.GetWorld()
-                .Filter<PlayerComponent>()
-                .Inc<MouseInputComponent>()
-                .Inc<PlayerPositionComponent>().End();
+            var filter = systems.GetWorld().Filter<PlayerTransformComponent>().Inc<PlayerComponent>().End();
+            var transformPool = systems.GetWorld().GetPool<PlayerTransformComponent>();
+
             var playerPool = systems.GetWorld().GetPool<PlayerComponent>();
-            var inputPool = systems.GetWorld().GetPool<MouseInputComponent>();
-            var positionPool = systems.GetWorld().GetPool<PlayerPositionComponent>();
             
             foreach (var entity in filter)
             {
+                ref var transformComponent = ref transformPool.Get(entity);
                 ref var playerComponent = ref playerPool.Get(entity);
-                ref var inputComponent = ref inputPool.Get(entity);
-                ref var positionComponent = ref positionPool.Get(entity);
-                
-                playerComponent.Player.position = Vector3.MoveTowards(playerComponent.Player.position, 
-                    inputComponent.InputResult, playerComponent.Speed);
-                positionComponent.Position = playerComponent.Player.position;
+
+                transformComponent.Player.position = playerComponent.Position;
             }
         }
     }

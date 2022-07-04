@@ -9,8 +9,8 @@ namespace Game.Scripts.ECS.Systems.Button
     {
         public void Run(EcsSystems systems)
         {
-            var positionFilter = systems.GetWorld().Filter<PlayerPositionComponent>().End();
-            var positionPool = systems.GetWorld().GetPool<PlayerPositionComponent>();
+            var playerFilter = systems.GetWorld().Filter<PlayerComponent>().End();
+            var playerPool = systems.GetWorld().GetPool<PlayerComponent>();
 
             var buttonFilter = systems.GetWorld().Filter<ButtonComponent>().End();
             var buttonPool = systems.GetWorld().GetPool<ButtonComponent>();
@@ -19,9 +19,9 @@ namespace Game.Scripts.ECS.Systems.Button
             {
                 ref var buttonComponent = ref buttonPool.Get(buttonEntity);
 
-                foreach (var inputEntity in positionFilter)
+                foreach (var inputEntity in playerFilter)
                 {
-                    ref var inputComponent = ref positionPool.Get(inputEntity);
+                    ref var inputComponent = ref playerPool.Get(inputEntity);
 
                     buttonComponent.Pressed = 
                         Vector3.Distance(inputComponent.Position, buttonComponent.Position) < buttonComponent.Radius;

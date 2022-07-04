@@ -1,7 +1,5 @@
-using Game.Scripts.ECS.Components.Button;
 using Game.Scripts.ECS.Components.Door;
 using Leopotam.EcsLite;
-using UnityEngine;
 
 namespace Game.Scripts.ECS.Systems.Door
 {
@@ -9,26 +7,17 @@ namespace Game.Scripts.ECS.Systems.Door
     {
         public void Run(EcsSystems systems)
         {
-            var buttonFilter = systems.GetWorld().Filter<ButtonComponent>().End();
-            var buttonPool = systems.GetWorld().GetPool<ButtonComponent>();
-
-            var doorFilter = systems.GetWorld().Filter<DoorComponent>().End();
+            var doorFilter = systems.GetWorld().Filter<DoorComponent>().Inc<DoorTransformComponent>().End();
             var doorPool = systems.GetWorld().GetPool<DoorComponent>();
 
+            var transformPool = systems.GetWorld().GetPool<DoorTransformComponent>();
+            
             foreach (var doorEntity in doorFilter)
             {
                 ref var doorComponent = ref doorPool.Get(doorEntity);
+                ref var transformComponent = ref transformPool.Get(doorEntity);
 
-                foreach (var buttonEntity in buttonFilter)
-                {
-                    ref var buttonComponent = ref buttonPool.Get(buttonEntity);
-
-                    if (buttonComponent.Pressed && buttonComponent.Id == doorComponent.Id)
-                    {
-                        doorComponent.Door.position = Vector3.MoveTowards(doorComponent.Door.position, 
-                            doorComponent.Direction, doorComponent.Speed);
-                    }
-                }
+                transformComponent.Door.position = doorComponent.Position;
             }
         }
     }

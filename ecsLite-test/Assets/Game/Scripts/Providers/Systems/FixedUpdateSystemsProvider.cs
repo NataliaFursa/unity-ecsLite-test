@@ -11,7 +11,9 @@ namespace Game.Scripts.Providers.Systems
         public FixedUpdateSystemsProvider(EcsWorld ecsWorld)
         {
             _fixedUpdateSystems = new EcsSystems(ecsWorld);
+            _fixedUpdateSystems.Add(new PlayerCalculatingSystem());
             _fixedUpdateSystems.Add(new PlayerMoveSystem());
+            _fixedUpdateSystems.Add(new DoorCalculatingSystem());
             _fixedUpdateSystems.Add(new DoorOpenSystem());
             
             _fixedUpdateSystems.Init();
